@@ -100,9 +100,9 @@ const TaskManager = () => {
                     </div>
                   </dialog>
                 </div>
-<div>
-  <TaskList></TaskList>
-</div>
+                <div>
+                  <TaskList></TaskList>
+                </div>
               </div>
             </div>
           </section>

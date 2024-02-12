@@ -43,7 +43,7 @@ const TaskList = () => {
                   <br />
                 </td>
                 <td>Purple</td>
-                <td><Operations></Operations></td>
+                <td><Operations index={index} task={task}></Operations></td>
                 <th>
                   <button className="btn btn-ghost btn-xs">details</button>
                 </th>
