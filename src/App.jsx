@@ -1,4 +1,5 @@
 import TaskManager from "./Components/TaskManager/TaskManager";
+import 'tailwindcss/tailwind.css';
 
 
 function App() {
