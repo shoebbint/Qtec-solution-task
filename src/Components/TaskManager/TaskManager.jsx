@@ -82,7 +82,6 @@ const TaskManager = () => {
                   />
                 </div>
                 <div className="flex justify-items-center  pt-5">
-  
                   {/* Open the modal using document.getElementById('ID').showModal() method */}
                   <button
                     className="btn btn-success mx-auto"
@@ -97,7 +96,7 @@ const TaskManager = () => {
                     className="modal modal-bottom sm:modal-middle"
                   >
                     <div className="modal-box">
-<AddTask></AddTask>
+                      <AddTask></AddTask>
                     </div>
                   </dialog>
                 </div>
