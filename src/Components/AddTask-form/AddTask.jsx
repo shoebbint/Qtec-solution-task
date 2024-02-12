@@ -3,20 +3,33 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 const AddTask = () => {
-    const taskNameRef = useRef('');
-    const taskDetailRef = useRef('');
-    const taskPriorityRef = useRef('');
+  //use ref hooks for getting values
+  const taskNameRef = useRef("");
+  const taskDetailRef = useRef("");
+  const taskPriorityRef = useRef("");
   const [startDate, setStartDate] = useState(new Date());
-  const handleSubmit = async(event) => {
+
+  //create new task
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const name = taskNameRef.current.value;
     const detail = taskDetailRef.current.value;
     const priority = taskPriorityRef.current.value;
-const data={name,detail,startDate,priority}
-   console.log(data);
-//    localStorage.setItem('data',data);
+    const data = { name, detail, startDate, priority };
+    console.log(data);
 
-  }
+    // set data to local storage
+    const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const newTask = [...existingTasks, data];
+    localStorage.setItem("tasks", JSON.stringify(newTask));
+
+    taskNameRef.current.value = " ";
+    taskDetailRef.current.value = " ";
+    taskPriorityRef.current.value = " ";
+    setStartDate("");
+    //    localStorage.setItem('data',data);
+  };
+
   return (
     <div className="p-3">
       <div className="modal-action">
@@ -33,10 +46,11 @@ const data={name,detail,startDate,priority}
             <span className="text-base label-text">Task Name</span>
           </label>
           <input
-          ref={taskNameRef}
+            ref={taskNameRef}
             type="text"
             placeholder="Type here"
             className="input input-bordered input-info w-full "
+            required
           />
         </div>
         <div>
@@ -44,7 +58,8 @@ const data={name,detail,startDate,priority}
             <span className="text-base label-text">Task Details</span>
           </label>
           <textarea
-          ref={taskDetailRef}
+            required
+            ref={taskDetailRef}
             className="textarea textarea-info w-full"
             placeholder="Bio"
           ></textarea>
@@ -65,10 +80,11 @@ const data={name,detail,startDate,priority}
             <label className="label">
               <span className="text-base label-text">Priority</span>
             </label>
-            <select ref={taskPriorityRef} className="select select-info w-full ">
-              <option disabled selected>
-                Select Priority
-              </option>
+            <select
+              required
+              ref={taskPriorityRef}
+              className="select select-info w-full"
+            >
               <option value={"high"}>High</option>
               <option value={"medium"}>Medium</option>
               <option value={"low"}>Low</option>
