@@ -14,41 +14,48 @@ const TaskList = () => {
           <div key={index} className="flex flex-wrap -m-2">
             <div className="p-2  w-full">
               <div className="card lg:card-side bg-base-100 shadow-xl">
-                <figure>
-                  {/* <img className="w-36" src={image} alt="Album" /> */}
-                </figure>
                 <div className="card-body flex ">
-                  <div className="flex flex-col lg:flex-row justify-between  ">
-                    <div>
-                      <h2 className="card-title mb-4 ">
-                        Microservices with <br /> Node JS and React
-                      </h2>
-                    </div>
-                    <div>
-                      <h2 className="card-title mb-4">Author</h2>
-                      <p className="text-start">Soyeb bin taher</p>
-                    </div>
-                    <div>
-                      <h2 className="card-title mb-4">Price</h2>
-                      <p className="text-start">$58</p>
-                    </div>
-                    <div>
-                      <h2 className="card-title mb-4">Validity</h2>
-                      <p className="text-start">Lifetime</p>
-                    </div>
-                    <div>
-                      <h2 className="card-title mb-4">Progress</h2>
-                      <progress
-                        className="items-start progress progress-error w-40"
-                        value="70"
-                        max="100"
-                      ></progress>
-                    </div>
-                  </div>
-                  <div className="card-actions lg:justify-end justify-center">
+                  <tr className="flex flex-col lg:flex-row justify-between">
+                    <th>
+                      <label>
+                        <input type="checkbox" className="checkbox" />
+                      </label>
+                    </th>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle w-12 h-12">
+                            <img
+                              src="/tailwind-css-component-profile-2@56w.png"
+                              alt="Avatar Tailwind CSS Component"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-bold">Hart Hagerty</div>
+                          <div className="text-sm opacity-50">
+                            United States
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      Zemlak, Daniel and Leannon
+                      <br />
+                      <span className="badge badge-ghost badge-sm">
+                        Desktop Support Technician
+                      </span>
+                    </td>
+                    <td>Purple</td>
+                    <th>
+                      <button className="btn btn-ghost btn-xs">details</button>
+                    </th>
+                  </tr>
+
+                  {/* <div className="card-actions lg:justify-end justify-center">
                     {" "}
                     <button className="btn btn-primary">Listen</button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
