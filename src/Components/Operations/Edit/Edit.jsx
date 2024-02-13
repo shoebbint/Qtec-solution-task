@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 const Edit = ({ index, task }) => {
   const [startDate, setStartDate] = useState(new Date());
   return (
@@ -15,7 +15,7 @@ const Edit = ({ index, task }) => {
         }}
         className="btn btn-circle"
       >
-        <MdDelete size={30} />
+        <FaEdit size={30}/>
       </button>
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">

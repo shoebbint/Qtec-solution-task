@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import Operations from "../Operations/Operations";
+import useTasksHook from "../Hooks/useTasksHook";
 
 const TaskList = () => {
-  const [tasks, setTasks] = useState([]);
-  useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    setTasks(storedTasks);
-  }, []);
+  const { tasks, setTasks } = useTasksHook();
 
   return (
     <div>

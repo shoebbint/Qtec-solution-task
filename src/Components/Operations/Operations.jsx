@@ -1,14 +1,16 @@
 
 import PropTypes from 'prop-types'; // Import PropTypes
 import Edit from './Edit/Edit';
+import Delete from './Delete/Delete';
 
 const Operations = ({ index, task }) => {
 
   return (
     <div className='flex justify-content-center items-center'>
       <button className="btn btn-info">Info</button>
-      <button className="btn btn-outline btn-warning">Success</button>
-      <Edit index={index} task={task} />
+   
+      <Edit index={index} task={task} /> 
+        <Delete index={index} task={task} ></Delete>
       
     </div>
   );
