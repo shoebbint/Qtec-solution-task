@@ -29,6 +29,7 @@ const AddTask = () => {
     taskPriorityRef.current.value = " ";
     setStartDate("");
     //    localStorage.setItem('data',data);
+    window.location.reload();
   };
 
   return (

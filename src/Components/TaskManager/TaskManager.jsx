@@ -3,6 +3,7 @@ import AddTask from "../AddTask-form/AddTask";
 import useTasksHook from "../Hooks/useTasksHook";
 import TaskList from "../TaskList/TaskList";
 import "./TaskManager.css";
+import { MdPlaylistAddCircle } from "react-icons/md";
 const TaskManager = () => {
   const { tasks, setTasks } = useTasksHook();
   const [selectedPriority, setSelectedPriority] = useState('');
@@ -97,6 +98,7 @@ const TaskManager = () => {
                       document.getElementById("my_modal_4").showModal()
                     }
                   >
+                    <MdPlaylistAddCircle size={30} />
                     Add Task
                   </button>
                   <dialog

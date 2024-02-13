@@ -11,10 +11,11 @@ const Status = ({ index, task }) => {
       status: updatedStatus
     };
     localStorage.setItem("tasks", JSON.stringify(existingTasks));
+    window.location.reload();
   };
 
   return (
-    <div className="">
+    <div className="flex items-center justify-center">
       <input
         type="checkbox"
         className="toggle toggle-warning"

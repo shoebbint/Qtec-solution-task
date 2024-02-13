@@ -2,7 +2,7 @@ import { CgPlayListSearch } from "react-icons/cg";
 const Details = ({ index, task }) => {
   const modalIds = `modal_${index}`;
   return (
-    <div>
+    <div className="mx-2 flex items-center justify-center">
       <button
         className="btn btn-circle"
         key={index}
