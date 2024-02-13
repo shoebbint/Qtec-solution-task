@@ -1,7 +1,15 @@
+import { useState } from "react";
 import AddTask from "../AddTask-form/AddTask";
+import useTasksHook from "../Hooks/useTasksHook";
 import TaskList from "../TaskList/TaskList";
 import "./TaskManager.css";
 const TaskManager = () => {
+  const { tasks, setTasks } = useTasksHook();
+  const [selectedPriority, setSelectedPriority] = useState('');
+
+  const handlePriorityChange = (e) => {
+    setSelectedPriority(e.target.value);
+  };
   return (
     <div>
       <div>
@@ -100,8 +108,29 @@ const TaskManager = () => {
                     </div>
                   </dialog>
                 </div>
+                <div className="me-0 flex justify-between">
+                  <div>
+                    <h1 className="font-bold">Total Tasks : {tasks.length}</h1>
+                    <h1 className="font-bold">
+                      Completed Tasks:{" "}
+                      {tasks.filter((task) => task.status === 1).length}
+                    </h1>
+                  </div>
+                  <div>
+                    <select  value={selectedPriority}
+        onChange={handlePriorityChange}  className="select select-info w-full max-w-xs ">
+                      <option disabled selected>
+                        Sort by priority
+                      </option>
+                      <option value="all">All</option>
+                      <option value="high">High</option>
+                      <option value="medium">Medium</option>
+                      <option value="low">Low</option>
+                    </select>
+                  </div>
+                </div>
                 <div>
-                  <TaskList></TaskList>
+                  <TaskList selectedPriority={selectedPriority}></TaskList>
                 </div>
               </div>
             </div>

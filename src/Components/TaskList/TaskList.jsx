@@ -3,8 +3,9 @@ import Operations from "../Operations/Operations";
 import useTasksHook from "../Hooks/useTasksHook";
 import Status from "../Operations/Status/Status";
 
-const TaskList = () => {
+const TaskList = ({ selectedPriority }) => {
   const { tasks, setTasks } = useTasksHook();
+  console.log(selectedPriority)
 
   return (
     <div>
