@@ -1,95 +1,90 @@
 
 import { useState } from "react";
-import PropTypes from 'prop-types'; // Import PropTypes
-import ReactDatePicker from "react-datepicker";
-
+import DatePicker from "react-datepicker";
+import { MdDelete } from "react-icons/md";
 const Edit = ({ index, task }) => {
-    const [formData, setFormData] = useState({
-        taskName: task.name || '',
-        taskDetails: task.details || '',
-        deadline: task.deadline || new Date(),
-        priority: task.priority || 'high'
-      });
-    //   const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData({ ...formData, [name]: value });
-    //   };
+  const [startDate, setStartDate] = useState(new Date());
   return (
     <div>
       <button
-        onClick={(index,task) => document.getElementById("my_modal_5").showModal()}
-        className="btn btn-info"
+        key={index}
+        task={task}
+        onClick={() => {
+          console.log(task.name);
+          document.getElementById("my_modal_5").showModal();
+        }}
+        className="btn btn-circle"
       >
-        X
+        <MdDelete size={30} />
       </button>
-      <dialog
-                    id="my_modal_5"
-                    className="modal modal-bottom sm:modal-middle"
-                  >
-                    <div className="modal-box">
-                    <form  action="" method="post">
-        <div>
-          <label className="label">
-            <span className="text-base label-text">Task Name</span>
-          </label>
-          <input
-            type="text"
-            value={formData.taskName}
-            placeholder="Type here"
-            className="input input-bordered input-info w-full "
-            required
-          />
-        </div>
-        <div>
-          <label className="label">
-            <span className="text-base label-text">Task Details</span>
-          </label>
-          <textarea
-            required
-            value={formData.taskDetails}
-            className="textarea textarea-info w-full"
-            placeholder="Bio"
-          ></textarea>
-        </div>
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                ✕
+              </button>
+            </form>
+          </div>
+          <form action="" method="post">
+            <div>
+              <label className="label">
+                <span className="text-base label-text">Task Name</span>
+              </label>
+              <input
+                type="text"
+                value={task.name}
+                placeholder="Type here"
+                className="input input-bordered input-info w-full "
+                required
+              />
+            </div>
+            <div>
+              <label className="label">
+                <span className="text-base label-text">Task Details</span>
+              </label>
+              <textarea
+              value={task.detail}
+                required
+                className="textarea textarea-info w-full"
+                placeholder="Bio"
+              ></textarea>
+            </div>
 
-        <div className=" grid grid-cols-2 gap-4">
-          <div>
-            <label className="label">
-              <span className="text-base label-text">Deadline</span>
-            </label>
-            <ReactDatePicker
+            <div className=" grid grid-cols-2 gap-4">
+              <div>
+                <label className="label">
+                  <span className="text-base label-text">Deadline</span>
+                </label>
+                <DatePicker
+                value={task.startDate}
               className="input input-bordered input-info  w-full "
-              selected={formData.deadline}
-
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
             />
-          </div>
-          <div>
-            <label className="label">
-              <span className="text-base label-text">Priority</span>
-            </label>
-            <select
-              required
-              value={formData.priority}
-              className="select select-info w-full"
-            >
-              <option value={"high"}>High</option>
-              <option value={"medium"}>Medium</option>
-              <option value={"low"}>Low</option>
-            </select>
-          </div>
+              </div>
+              <div>
+                <label className="label">
+                  <span className="text-base label-text">Priority</span>
+                </label>
+                <select value={task.priority} required className="select select-info w-full">
+                  <option value={"high"}>High</option>
+                  <option value={"medium"}>Medium</option>
+                  <option value={"low"}>Low</option>
+                </select>
+              </div>
+            </div>
+            <div className="flex">
+              <button className="btn btn-success mx-auto mt-10">
+                Add Task
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="flex">
-          <button className="btn btn-success mx-auto mt-10">Add Task</button>
-        </div>
-      </form>
-                    </div>
-                  </dialog>
+      </dialog>
     </div>
   );
 };
-Edit.propTypes = {
-    index: PropTypes.number.isRequired,
-    task: PropTypes.any.isRequired, // Add PropTypes validation for task
-  };
 
 export default Edit;

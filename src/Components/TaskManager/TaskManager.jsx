@@ -86,13 +86,13 @@ const TaskManager = () => {
                   <button
                     className="btn btn-success mx-auto"
                     onClick={() =>
-                      document.getElementById("my_modal_5").showModal()
+                      document.getElementById("my_modal_4").showModal()
                     }
                   >
                     Add Task
                   </button>
                   <dialog
-                    id="my_modal_5"
+                    id="my_modal_4"
                     className="modal modal-bottom sm:modal-middle"
                   >
                     <div className="modal-box">
