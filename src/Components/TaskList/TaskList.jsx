@@ -20,7 +20,6 @@ const TaskList = () => {
                 <th>Priority</th>
                 <th>Status</th>
                 <th>Operation</th>
-                <th></th>
               </tr>
             </thead>
           </div>

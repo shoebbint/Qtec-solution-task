@@ -14,7 +14,7 @@ const Status = ({ index, task }) => {
   };
 
   return (
-    <div>
+    <div className="">
       <input
         type="checkbox"
         className="toggle toggle-warning"
