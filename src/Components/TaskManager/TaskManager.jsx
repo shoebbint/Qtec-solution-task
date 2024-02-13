@@ -6,7 +6,7 @@ import "./TaskManager.css";
 import { MdPlaylistAddCircle } from "react-icons/md";
 const TaskManager = () => {
   const { tasks, setTasks } = useTasksHook();
-  const [selectedPriority, setSelectedPriority] = useState('');
+  const [selectedPriority, setSelectedPriority] = useState("");
 
   const handlePriorityChange = (e) => {
     setSelectedPriority(e.target.value);
@@ -18,7 +18,6 @@ const TaskManager = () => {
           <div className="  h-96 py-20 pb-36 flex justify-center items-center ">
             <div className="text-sm breadcrumbs text-center ">
               <h1 className="text-5xl my-5">Task-Manager</h1>
-
             </div>
           </div>
         </div>
@@ -38,7 +37,7 @@ const TaskManager = () => {
                     }
                   />
                 </div>
-                <div className="flex justify-items-center  pt-5">
+                <div className="flex justify-items-center  py-5">
                   <button
                     className="btn btn-success mx-auto"
                     onClick={() =>
@@ -66,9 +65,12 @@ const TaskManager = () => {
                     </h1>
                   </div>
                   <div>
-                    <select  value={selectedPriority}
-        onChange={handlePriorityChange}  className="select select-info w-full max-w-xs ">
-                      <option value="" disabled selected>
+                    <select
+                      value={selectedPriority}
+                      onChange={handlePriorityChange}
+                      className="select select-info w-full max-w-xs "
+                    >
+                      <option value="" disabled defaultValue="">
                         Sort by priority
                       </option>
                       <option value="all">All</option>
