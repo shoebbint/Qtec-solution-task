@@ -48,36 +48,41 @@ const TaskList = ({ selectedPriority }) => {
             </thead>
           </div>
         </div>
-        {filteredTasks.map((task, index) => (
-          <div key={index} className="p-2">
-            <div className="flex flex-wrap w-full card lg:card-side bg-base-100 shadow-xl ">
-              <tr className="card-body flex  flex-col lg:flex-row justify-between  item-center mx-auto ">
-                <td className="flex items-center justify-center">
-                  <div className="flex items-center gap-3">
-                    <div>
-                      <div className="font-bold ">{task.name}</div>
-                    </div>
-                  </div>
-                </td>
-                <td
-                  className={`badge font-bold flex items-center justify-center  p-5 ${getPriorityClass(
-                    task.priority
-                  )}`}
-                >
-                  {task.priority}
-                  <br />
-                </td>
-
-                <td className="flex items-center justify-center">
-                  <Status index={index} task={task}></Status>
-                </td>
-                <td>
-                  <Operations index={index} task={task}></Operations>
-                </td>
-              </tr>
+        {filteredTasks.length === 0 ? (
+  <div className="text-center text-gray-500 mt-4 font-bold"><h1>No tasks added</h1></div>
+) : (
+  filteredTasks.map((task, index) => (
+    <div key={index} className="p-2">
+      <div className="flex flex-wrap w-full card lg:card-side bg-base-100 shadow-xl">
+        <tr className="card-body flex flex-col lg:flex-row justify-between items-center mx-auto">
+          <td className="flex items-center justify-center">
+            <div className="flex items-center gap-3">
+              <div>
+                <div className="font-bold">{task.name}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          </td>
+          <td
+            className={`badge font-bold flex items-center justify-center p-5 ${getPriorityClass(
+              task.priority
+            )}`}
+          >
+            {task.priority}
+            <br />
+          </td>
+
+          <td className="flex items-center justify-center">
+            <Status index={index} task={task}></Status>
+          </td>
+          <td>
+            <Operations index={index} task={task}></Operations>
+          </td>
+        </tr>
+      </div>
+    </div>
+  ))
+)}
+
       </div>
     </div>
   );

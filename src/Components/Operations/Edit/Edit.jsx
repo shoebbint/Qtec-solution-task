@@ -42,7 +42,7 @@ const Edit = ({ index, task }) => {
         onClick={() => {
           document.getElementById(modalId).showModal();
         }}
-        className="btn btn-circle"
+        className="btn btn-circle btn-outline btn-primary"
       >
         <FaEdit size={30} />
       </button>

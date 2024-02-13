@@ -4,7 +4,7 @@ const Details = ({ index, task }) => {
   return (
     <div className="mx-2 flex items-center justify-center">
       <button
-        className="btn btn-circle"
+        className="btn btn-circle btn-outline btn-info"
         key={index}
         onClick={() => {
           document.getElementById(modalIds).showModal();

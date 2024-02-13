@@ -15,7 +15,7 @@ const Delete = ({ index }) => {
         <div>
             <button
                 onClick={handleDelete}
-                className="btn btn-circle"
+                className="btn btn-circle btn-outline btn-secondary"
             >
                 <MdDelete size={30} />
             </button>
