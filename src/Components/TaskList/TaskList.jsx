@@ -1,16 +1,25 @@
-
 import Operations from "../Operations/Operations";
 import useTasksHook from "../Hooks/useTasksHook";
 import Status from "../Operations/Status/Status";
+import { useState, useEffect } from "react";
 
 const TaskList = ({ selectedPriority }) => {
   const { tasks, setTasks } = useTasksHook();
-  console.log(selectedPriority)
+  const [selectPriority, setSelectPriority] = useState('all');
+
+  useEffect(() => {
+    setSelectPriority(selectedPriority);
+  }, [selectedPriority]);
+
+  const filteredTasks = tasks.filter(task => {
+    if (selectPriority === 'all'||selectPriority === '') return true;
+    return task.priority === selectPriority;
+  });
 
   return (
     <div>
-      <div className=" sm:py-8 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-        <div className=" p-2">
+      <div className="sm:py-8 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+        <div className="p-2">
           <div
             style={{ backgroundColor: "#C4C2E9" }}
             className="flex flex-wrap  w-full card lg:card-side shadow-2xl "
@@ -25,9 +34,9 @@ const TaskList = ({ selectedPriority }) => {
             </thead>
           </div>
         </div>
-        {tasks.map((task, index) => (
-          <div key={index} className=" p-2">
-            <div className="flex flex-wrap  w-full card lg:card-side bg-base-100 shadow-xl ">
+        {filteredTasks.map((task, index)=> (
+          <div key={index} className="p-2">
+            <div className="flex flex-wrap w-full card lg:card-side bg-base-100 shadow-xl ">
               <tr className="card-body flex  flex-col lg:flex-row justify-between  item-center">
                 <td>
                   <div className="flex items-center gap-3">
@@ -42,13 +51,7 @@ const TaskList = ({ selectedPriority }) => {
                 </td>
                 <td><Status index={index} task={task}></Status></td>
                 <td><Operations index={index} task={task}></Operations></td>
-
               </tr>
-
-              {/* <div className="card-actions lg:justify-end justify-center">
-                    {" "}
-                    <button className="btn btn-primary">Listen</button>
-                  </div> */}
             </div>
           </div>
         ))}

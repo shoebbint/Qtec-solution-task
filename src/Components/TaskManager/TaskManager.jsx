@@ -119,7 +119,7 @@ const TaskManager = () => {
                   <div>
                     <select  value={selectedPriority}
         onChange={handlePriorityChange}  className="select select-info w-full max-w-xs ">
-                      <option disabled selected>
+                      <option value="" disabled selected>
                         Sort by priority
                       </option>
                       <option value="all">All</option>
