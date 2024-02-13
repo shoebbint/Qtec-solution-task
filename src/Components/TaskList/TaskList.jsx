@@ -1,6 +1,7 @@
 
 import Operations from "../Operations/Operations";
 import useTasksHook from "../Hooks/useTasksHook";
+import Status from "../Operations/Status/Status";
 
 const TaskList = () => {
   const { tasks, setTasks } = useTasksHook();
@@ -27,7 +28,7 @@ const TaskList = () => {
         {tasks.map((task, index) => (
           <div key={index} className=" p-2">
             <div className="flex flex-wrap  w-full card lg:card-side bg-base-100 shadow-xl ">
-              <tr className="card-body flex flex-col lg:flex-row justify-between">
+              <tr className="card-body flex  flex-col lg:flex-row justify-between  item-center">
                 <td>
                   <div className="flex items-center gap-3">
                     <div>
@@ -39,11 +40,9 @@ const TaskList = () => {
                   {task.priority}
                   <br />
                 </td>
-                <td>Purple</td>
+                <td><Status index={index} task={task}></Status></td>
                 <td><Operations index={index} task={task}></Operations></td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+
               </tr>
 
               {/* <div className="card-actions lg:justify-end justify-center">

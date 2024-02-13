@@ -15,7 +15,8 @@ const AddTask = () => {
     const name = taskNameRef.current.value;
     const detail = taskDetailRef.current.value;
     const priority = taskPriorityRef.current.value;
-    const data = { name, detail, startDate, priority };
+    const status = 0;
+    const data = { name, detail, startDate, priority, status };
     console.log(data);
 
     // set data to local storage

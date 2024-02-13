@@ -6,7 +6,7 @@ const Edit = ({ index, task }) => {
   const [editedTask, setEditedTask] = useState(task);
   const [startDate, setStartDate] = useState(new Date());
   const modalId = `my_modal_${index}`;
-//handling Inputdata change
+  //handling Inputdata change
   const handleNameChange = (e) => {
     setEditedTask({ ...editedTask, name: e.target.value });
   };
@@ -18,11 +18,18 @@ const Edit = ({ index, task }) => {
   const handlePriorityChange = (e) => {
     setEditedTask({ ...editedTask, priority: e.target.value });
   };
+  const handleDateChange = (date) => {
+    setStartDate(date);
+    setEditedTask({
+      ...editedTask,
+      startDate: date,
+    });
+  };
   //handling save and update
   const handleSave = (event) => {
     event.preventDefault();
     const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    existingTasks[index] = editedTask; 
+    existingTasks[index] = editedTask;
     localStorage.setItem("tasks", JSON.stringify(existingTasks));
     document.getElementById(modalId).close();
     window.location.reload();
@@ -32,13 +39,12 @@ const Edit = ({ index, task }) => {
     <div>
       <button
         key={index}
- 
         onClick={() => {
           document.getElementById(modalId).showModal();
         }}
         className="btn btn-circle"
       >
-        <FaEdit size={30}/>
+        <FaEdit size={30} />
       </button>
       <dialog id={modalId} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
@@ -56,7 +62,7 @@ const Edit = ({ index, task }) => {
               </label>
               <input
                 type="text"
-                value={editedTask.name} 
+                value={editedTask.name}
                 onChange={handleNameChange}
                 placeholder="Type here"
                 className="input input-bordered input-info w-full "
@@ -68,7 +74,7 @@ const Edit = ({ index, task }) => {
                 <span className="text-base label-text">Task Details</span>
               </label>
               <textarea
-                value={editedTask.detail} 
+                value={editedTask.detail}
                 onChange={handleDetailChange}
                 required
                 className="textarea textarea-info w-full"
@@ -80,12 +86,12 @@ const Edit = ({ index, task }) => {
                 <label className="label">
                   <span className="text-base label-text">Deadline</span>
                 </label>
-                
+
                 <DatePicker
-                  value={editedTask.startDate} 
+                  value={editedTask.startDate}
                   className="input input-bordered input-info w-full"
                   selected={startDate}
-                  onChange={(date) => setStartDate(date)}
+                  onChange={(date) => handleDateChange(date)}
                 />
               </div>
               <div>
@@ -93,7 +99,7 @@ const Edit = ({ index, task }) => {
                   <span className="text-base label-text">Priority</span>
                 </label>
                 <select
-                  value={editedTask.priority} 
+                  value={editedTask.priority}
                   onChange={handlePriorityChange}
                   required
                   className="select select-info w-full"
